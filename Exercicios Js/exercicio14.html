@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <main>
+        <div>
+            <h4> Calculadora - IMC </h4>
+            <div>
+                <label>Digite seu peso:</label>
+                <input type="number" id='peso'>
+            </div>
+            <div>
+                <label>Digite sua altura:</label>
+                <input type="number" id='altura'>
+            </div>
+
+            <button id='calcular'>Calcular IMC</button>
+
+            <div id='resultado'></div>
+        </div>
+    </main>
+
+    <script>
+        const calcular = document.getElementById('calcular');
+
+        function imc() {
+            const altura = document.getElementById('altura').value;
+            const peso = document.getElementById('peso').value;
+            const resultado = document.getElementById('resultado');
+
+            if (altura !== '' && peso !== '') {
+
+                const valorIMC = (peso / (altura * altura)).toFixed(1);
+
+                let classificacao = '';
+
+                if (valorIMC < 20.7) {
+                    classificacao = "ABAIXO DO PESO."
+                } else if (valorIMC < 26, 4) {
+                    classificacao = "NO PESO NORMAL"
+                } else if (valorIMC < 27, 8) {
+                    classificacao = 'MARGINALMENTE ACIMA DO PESO.';
+                } else if (valorIMC < 31, 1) {
+                    classificacao = 'ACIMA DO PESO IDEAL';
+                } else {
+                    classificacao = 'OBESO';
+                }
+                resultado.textContent = `Seu IMC é ${valorIMC} e você está ${classificacao}!`;
+
+            } else {
+                resultado.textContent = 'Preencha todos os campos!';
+            }
+        }
+        calcular.addEventListener('click', imc);
+    </script>
+</body>
+</html>
